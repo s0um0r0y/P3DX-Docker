@@ -1,6 +1,6 @@
 <launch>
   <!-- Arguments -->
-  <arg name="scan_topic"     default="/camera/scan"/>
+  <arg name="scan_topic"     default="/scan"/>
   <arg name="initial_pose_x" default="0.0"/>
   <arg name="initial_pose_y" default="0.0"/>
   <arg name="initial_pose_a" default="0.0"/>
@@ -31,7 +31,7 @@
     <param name="laser_z_short"             value="0.05"/>
     <param name="laser_z_max"               value="0.05"/>
     <param name="laser_z_rand"              value="0.5"/>
-    <param name="laser_sigma_hit"           value="0.1"/>
+    <param name="laser_sigma_hit"           value="0.2"/>
     <param name="laser_lambda_short"        value="0.1"/>
     <param name="laser_likelihood_max_dist" value="4.0"/>
     <param name="laser_model_type"          value="likelihood_field"/>
@@ -39,8 +39,8 @@
     <param name="odom_model_type"           value="diff"/>
     <param name="odom_alpha1"               value="0.005"/>
     <param name="odom_alpha2"               value="0.005"/>
-    <param name="odom_alpha3"               value="0.005"/>
-    <param name="odom_alpha4"               value="0.005"/>
+    <param name="odom_alpha3"               value="0.05"/>
+    <param name="odom_alpha4"               value="0.05"/>
     <param name="odom_frame_id"             value="odom"/>
     <param name="base_frame_id"             value="base_link"/>
 

@@ -211,7 +211,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.030000001192092896
       Style: Flat Squares
-      Topic: /camera/scan
+      Topic: /scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -457,7 +457,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 70.92707824707031
+      Scale: 60.028560638427734
       Target Frame: <Fixed Frame>
       X: 8.573051452636719
       Y: -2.5972487926483154
