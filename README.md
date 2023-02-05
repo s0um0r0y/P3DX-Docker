@@ -1,5 +1,10 @@
 # Usage Instructions
 
+## Some Prerequisites
+
+- Installation of librealsense2 for using the `realsense2_camera` package.
+- Install `aria` using `sudo apt install libaria-dev`
+
 ## Start up the ROS Master Node
 
 ```roscore```
