@@ -211,6 +211,53 @@ work original in ucs-ros-pkg.
 	<xacro:p3dx_wheel suffix="left" parent="chassis" reflect="1"/>
 	<xacro:p3dx_wheel suffix="right" parent="chassis" reflect="-1"/>
 
+	<link name="rplidar">
+		<inertial>            <!--Inertial valuse include origin, mass and inertias as per CAD model-->
+		<mass value="0.10441" />
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<inertia ixx="0.1000000042" ixy="0" ixz="0" iyy="0.1000000042" iyz="0" izz="0.1000000040" /> <!-- Taken at the output coordinate system-->
+		</inertial>
+		<collision>           <!-- Collision values include dimensions and origin-->
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<geometry>
+			<mesh filename="package://p3dx_description/meshes/rplidar.dae" scale="1 1 1"/>
+		</geometry>
+		</collision>
+		<visual>               <!-- Visual valuse include origin, material and mesh to make model look similar to real robot-->
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<geometry>
+			<mesh filename="package://p3dx_description/meshes/rplidar.dae" scale="1 1 1"/>
+		</geometry>
+		<material name="RPLidarBlack">
+			<color rgba="0.117 0.117 0.117 1" />
+		</material>
+		</visual>
+  </link>
+
+   <joint name="chassis_to_rplidar" type="fixed">
+     <axis xyz="0 0 0" />
+     <origin rpy="0 0 -1.57" xyz="0.06 0.0 0.33" />
+     <parent link="chassis" />
+     <child link="rplidar" />
+   </joint>
+
+	<!--Lidar-->
+  	<!-- <xacro:m_link_cylinder name="rplidar"
+                   origin_rpy="0 0 0" origin_xyz="0 0 0"
+                   mass="0.10441"
+                   ixx="0.1000000042" ixy="0" ixz="0"
+                   iyy="0.1000000042" iyz="0"
+                   izz="0.1000000040"
+                   material="black"
+                   filename="package://wheelchair_description/meshes/rplidar.dae" scale="1 1 1"/> -->
+
+	<!-- joint between chassis and lidar -->
+    <!-- <xacro:f_joint name="chassis_to_rplidar"
+			type="fixed"
+			axis_xyz="0 0 0"
+			origin_rpy="0 0 -1.57" origin_xyz="0.23 0 -0.15"
+			parent="chassis" child="rplidar" /> -->
+
 	<xacro:sensor_d435 parent="chassis">
 		<origin xyz="0.1 0 0.860" rpy="0 0 0"/>
     </xacro:sensor_d435>
