@@ -1,5 +1,5 @@
 # shutdown_costmaps: false
-robot_radius: 0.35
+robot_radius: 0.25
 footprint_padding: 0.05
 
 shutdown_costmaps: false

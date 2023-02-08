@@ -3,7 +3,6 @@
 from dis import Instruction
 from http import client
 import rospy
-import rosnode
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 import actionlib
 # stanza.install_corenlp()
@@ -12,37 +11,53 @@ from stanza.server import CoreNLPClient
 from std_msgs.msg import String,Bool
 global command
 command="start"
+
 def reach_callback(msg):
     global reach
     reach=msg.data
+
 def callback(message):
     global command
     command=message.data
+
 class LangNav():
+
     global command,reach
     print(command)
+
     def __init__(self):
         global name_pub,reach
         reach=False
         rospy.init_node("lang_nav")
         
         self.client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
-        self.client.wait_for_server()
+        # self.client.wait_for_server()
 
         rospy.Subscriber("chatter", String, callback)
         rospy.Subscriber("reached", Bool, reach_callback)
 
         name_pub=rospy.Publisher("/human_name",String,queue_size=10)
+        
         self.lookup_table = {
-            'bhanu table': [1.3091168403625488, -1.879215955734253, 0, 0, -0.73842, 0.6743385],
-            'gate': [0.6381759643554688, 0.12147831916809082, 0, 0, 0.9569152216628726, 0.2903674543572256],
-            'my table':[0.4219,0.4939,0,0,-0.0024, 0.999],
-            'aman table':[5.258465766906738,-0.9357885122299194, 0, 0, 0.6214006413881973, 0.7834929756432645],
-            'aman':[0,0,0,0,0,0],
-            'gate 1': [9.0772705078125, -4.658927917480469, 0, 0, -0.7926538204270054, 0.609671978167336]
-        }
-
-
+			"table 1": [21.594, -1.615, 0.000, 0.000, 0.000, -0.133, 0.991],        # Laksh's table
+            "table 2": [14.054, -1.395, 0.000, 0.000, 0.000, -0.707, 0.708],	        # Jaski's table
+			"table 3": [12.217, -1.444, 0.000, 0.000, 0.000, -0.782, 0.623],		    # Neel's table
+            "table 4": [10.752, -0.752, 0.000, 0.000, 0.000, -0.697, 0.717],	        # Bhanu's table
+			"table 5": [8.808, -0.933, 0.000, 0.000, 0.000, -0.707, 0.707],         # Rishabh's table
+			"table 6": [8.938, 1.270, 0.000, 0.000, 0.000, 1.000, 0.028],        #   Equipments table
+			"table 7": [13.472, 1.352, 0.000, 0.000, 0.000, 0.707, 0.707],        # Parth's table
+			"table 8": [15.446, 1.340, 0.000, 0.000, 0.000, 0.708, 0.706],        # Damodar's table
+            "table 9": [20.734, 1.776, 0.000, 0.000, 0.000, 0.701, 0.714],        # Interns' table
+            "table 10": [6.45, 0.666, 0.000, 0.000, 0.000, 0.676, 0.737],        # Sanket's table
+			"gate 1" : [18.664, -2.658, 0.000, 0.000, 0.000, -0.771, 0.636],	    # Main door
+            "gate 2" : [7.875, 0.279, 0.000, 0.000, 0.000, -0.999, 0.051],	    # Back door
+            # "gate 3" : [15.463, -5.776, 0.000, 0.000, 0.000, -0.705, 0.709],
+            "gate 3" : [15.327, -4.463, 0.000, 0.000, 0.000, -0.685, 0.728],	    # Faculty cabins' door
+            "gate 4" : [7.092, -4.063, 0.000, 0.000, 0.000, -0.699, 0.715],	    # Robotics club
+            # "gate 4" : [5.092, -4.715, 0.000, 0.000, 0.000, -0.699, 0.715],	    # Robotics club
+            "corridor": [12.0, -4.063, 0.000, 0.000, 0.000, -0.699, 0.715], # midpoint between robotics club and faculty door
+            "sim room": [5.092, -1.5063, 0.000, 0.000, 0.000, -0.699, 0.715] #Sim room waypoint
+		}
     
     def detect_location(self, user_input):
         detected_nouns = []
@@ -79,7 +94,7 @@ class LangNav():
             if detected_noun_position[i]+1==detected_noun_position[i+1]:
                 if detected_nouns[i+1]=="\'s":
                     
-                    detected_nouns[i+1]=detected_nouns[i]
+                    detected_nouns[i+1]=detected_nouns[i]+ detected_nouns[i+1]
                     detected_nouns.pop(i)
                     detected_noun_position.pop(i)
                 else:
@@ -212,11 +227,8 @@ class LangNav():
 
                 else:
                     print(f"Invalid Location: {location}")
-            rosnode.kill_nodes(['talker', 'Voice_NLP'])
-            exit
         else:
             print("No Location Detected!!")
-    
 
 
     def run(self):
@@ -232,8 +244,6 @@ class LangNav():
 
             else:
                 break
-
-
 
 
 if __name__ == '__main__':

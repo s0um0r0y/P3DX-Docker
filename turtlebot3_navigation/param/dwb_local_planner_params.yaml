@@ -30,7 +30,7 @@ DWBLocalPlanner:
   min_vel_y: 0.0
 
   # Path Simulation
-  sim_time: 5.0
+  sim_time: 3.0
   sim_period: 1.7
   #If discretize_by_time is false, then sim_granularity is the maximum amount of distance between
   # *  two successive points on the trajectory, and angular_sim_granularity is the maximum amount of
@@ -47,11 +47,11 @@ DWBLocalPlanner:
   prune_plan: true
   aggregation_type: sum
   GoalDist:
-    scale: 20.0 #48.0
+    scale: 48.0 #48.0
   PathDist:
     scale: 50.0
   ObstacleFootprint:
-    scale: 20.0 # 2.0
+    scale: 2.0 # 2.0
   Oscillation:
     scale: 100.0
   RotateToGoal:
@@ -60,7 +60,7 @@ DWBLocalPlanner:
     scale: 100.0
     forward_point_distance: 0.325
   GoalAlign:
-    scale: 100.0 #50.0
+    scale: 30.0 #50.0
     forward_point_distance: 0.325
 
   max_scaling_factor: 2.5
