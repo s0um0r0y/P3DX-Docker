@@ -1,11 +1,30 @@
 # Usage Instructions
 
-## Get started
+### Prerequisites
+
+- Docker Installation
+  ```bash
+  # Install Docker using convenience script
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh ./get-docker.sh
+
+  # Post-install configuration
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
+  sudo systemctl enable docker.service
+  sudo systemctl enable containerd.service
+
+  # Verify installation
+  sudo systemctl is-enabled docker
+  ```
+
+ **Reboot before proceeding further**
 
 **GHCR Authentication** 
   ```bash
   echo "<YOUR_GITHUB_PAT>" | docker login ghcr.io -u <YOUR_GITHUB_USERID> --password-stdin
   ```
+
 ##### Prerequisites
 - VSCode
 - Remote Development Extension by Microsoft (Inside VSCode)
