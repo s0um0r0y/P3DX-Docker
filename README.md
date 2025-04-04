@@ -24,9 +24,7 @@
     - Select **Dev Containers: Reopen in Container**
 
     - Use `Build WS` button to build workspace
-  
-    >Note: To access these buttons you may need to enable [VSCode Action Button Extension](https://marketplace.visualstudio.com/items?itemName=seunlanlege.action-buttons) through the Extensions Tab in VSCode, the extension should download automatically on container startup
-  
+    
 
 ## Start up the ROS Master Node
 
