@@ -15,7 +15,7 @@
     ```bash 
     mkdir P3DX && cd P3DX
     # Clone the repo 
-    git clone https://github.com/rtarun1/P3DX-Docker.git
+    git clone https://github.com/rtarun1/P3DX-Docker.git .
     # Open VSCode 
     code .
     ```
