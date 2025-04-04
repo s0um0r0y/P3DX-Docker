@@ -64,6 +64,26 @@ To get pointclouds from the RGBD images:
 
 ```rosrun turtlebot3_navigation Voice_NLP```
 
+## Start up the ROS
+
+1. Launch
+   ```
+   sudo chmod +777 /dev/ttyUSB0
+   roslaunch husky_base base.launch 
+   ```
+   - Optionally, you can plug a joystick and teleop the robot.
+
+## Docker
+
+- To permanently add any ROS APT packages, list them in the rosPkgs.list file, then rebuild the Docker image using:
+   ```
+   docker build -t ghcr.io/rtarun1/husky_base -f .devcontainer/Dockerfile .devcontainer
+   ```
+- Always run ```sudo apt update``` inside the container before installing any additional packages.
+  
+- For Docker-related questions or issues, feel free to open an issue on the [DockerForROS2Development](https://github.com/soham2560/DockerForROS2Development.git)
+
+
 ### Credits
 
 - This Docker setup was adapted from [Soham's repository](https://github.com/soham2560/DockerForROS2Development.git).
