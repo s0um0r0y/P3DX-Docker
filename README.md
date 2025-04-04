@@ -14,7 +14,7 @@
 - Create a folder for P3DX development
     ```bash 
     mkdir P3DX && cd P3DX
-    # Clone the repo with submodules
+    # Clone the repo 
     git clone https://github.com/rtarun1/P3DX-Docker.git
     # Open VSCode 
     code .
