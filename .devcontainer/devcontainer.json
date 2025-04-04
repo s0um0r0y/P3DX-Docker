@@ -1,10 +1,11 @@
 {
     "name": "P3DX Development on AMD64/x86",
-    "image": "ghcr.io/rtarun1/p3dx_base",
+    "image": "ghcr.io/rtarun1/p3dx_base:latest",
     "privileged": true,
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/user/catkin_ws/src,type=bind",
     "workspaceFolder": "/home/user/catkin_ws/src",
     "customizations": {
+        
         "vscode": {
             "settings": {
                 "actionButtons": {
@@ -17,7 +18,7 @@
                             "cwd": "/home/user/catkin_ws",
                             "color": "green",
                             "singleInstance": true,
-                            "command": "catkin_make"
+                            "command": "source /opt/ros/noetic/setup.bash && catkin_make && source devel/setup.bash"
                         }
                     ]
                 }

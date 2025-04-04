@@ -4,7 +4,7 @@ FROM ghcr.io/rtarun1/noetic:latest
 LABEL org.opencontainers.image.description="P3DX"
 LABEL org.opencontainers.image.title="P3DXDevCon"
 LABEL org.opencontainers.image.vendor="Tarun R"
-LABEL org.opencontainers.image.source="https://github.com/rtarun1/DockerForROS2Development"
+LABEL org.opencontainers.image.source="https://github.com/rtarun1/P3DX-Docker"
 LABEL maintainer="tarun.ramak@gmail.com"
 LABEL org.opencontainers.image.licenses="MIT"
 # handle default shell
@@ -43,7 +43,7 @@ RUN mkdir build && cd build \
     && cmake ../ \
     && sudo make uninstall && make clean && make && sudo make install 
 
-# COPY rosPkgs.list /tmp/rosPkgs.list
-# RUN sudo apt-get update \
-#     && sudo apt-get -y install --no-install-recommends $(cat /tmp/rosPkgs.list) \
-#     && sudo rm -rf /var/lib/apt/lists/*
+COPY rosPkgs.list /tmp/rosPkgs.list
+RUN sudo apt-get update \
+    && sudo apt-get -y install --no-install-recommends $(cat /tmp/rosPkgs.list) \
+    && sudo rm -rf /var/lib/apt/lists/*

@@ -2,3 +2,4 @@ ros-noetic-costmap-2d
 ros-noetic-map-server
 ros-noetic-tf2-sensor-msgs
 ros-noetic-navigation
+ros-noetic-realsense2-camera
