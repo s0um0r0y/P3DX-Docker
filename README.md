@@ -63,3 +63,8 @@ To get pointclouds from the RGBD images:
 ```rosrun turtlebot3_navigation talker```
 
 ```rosrun turtlebot3_navigation Voice_NLP```
+
+### Credits
+
+- This Docker setup was adapted from [Soham's repository](https://github.com/soham2560/DockerForROS2Development.git).
+- If you use this repository for your project or publication, please consider citing or acknowledging the contributors accordingly.
